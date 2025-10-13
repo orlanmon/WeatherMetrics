@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using WeatherMetricsDTO;
 using WeatherMetricsWebAPI.ServicesImplementation;
 
@@ -10,11 +12,34 @@ namespace WeatherMetricsWebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // IConfiguration is accessible through the builder.Configuration property
+            IConfiguration configuration = builder.Configuration;
+
+
+
             // Add services to the container.
 
             builder.Services.AddControllers();
 
-            builder.Services.AddScoped<IWeatherMetricsDataService, WeatherMetricsDataService>(); // Register your service
+            // Add Swagger Support
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+
+
+            //builder.Services.AddScoped<IWeatherMetricsDataService, WeatherMetricsDataService>(); // Register your service
+
+            builder.Services.AddScoped<IWeatherMetricsDataService>(provider =>
+            {
+                
+                string? dBConnectionString = configuration.GetConnectionString("DBConnection");
+                //string? dBConnectionString = _configuration["ConnectionStrings:DBConnection"];
+
+
+                return new WeatherMetricsDataService(dBConnectionString);
+            });
+
+
 
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -26,14 +51,19 @@ namespace WeatherMetricsWebAPI
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+
+                // Add Swagger Support
+                app.UseSwagger();
+                app.UseSwaggerUI();
+
+
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
 
-            app.MapControllers();
+            app.MapControllers(); // Maps attribute-routed controllers
 
 
             // Configure AutoMapper For Model to DTOs 

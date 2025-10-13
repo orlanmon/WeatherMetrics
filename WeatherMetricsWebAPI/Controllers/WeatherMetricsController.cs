@@ -8,13 +8,14 @@ using WeatherMetricsWebAPI.ServicesImplementation;
 namespace WeatherMetricsWebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    //[Route("api/[controller]/[action]")]
     public class WeatherMetricsController : ControllerBase
     {
        
         private readonly ILogger<WeatherMetricsController> _logger;
         private readonly IWeatherMetricsDataService _WeatherMetricsDataService;
         private readonly IConfiguration _configuration;
+        private readonly IWeatherMetricsDataService _weatherMetricsDataService;
 
 
         public WeatherMetricsController(ILogger<WeatherMetricsController> logger, IWeatherMetricsDataService weatherMetricsDataService, IConfiguration configuration)
@@ -22,25 +23,20 @@ namespace WeatherMetricsWebAPI.Controllers
             _logger = logger;
             _WeatherMetricsDataService = weatherMetricsDataService;
             _configuration = configuration;
+            _weatherMetricsDataService = weatherMetricsDataService;
 
         }
 
-        [HttpPost(Name = "InsertWeatherMetricsData")]
-        public IActionResult InsertWeatherMetricsData(WeatherMetricsLogDTO weatherMetricsLogDTO) {
-
-
-
-            string? dBConnectionString = _configuration.GetConnectionString("DBConnection");
-            //string? dBConnectionString = _configuration["ConnectionStrings:DBConnection"];
-            WeatherMetricsDataService? weatherMetricsDataService = new WeatherMetricsDataService(dBConnectionString);
+        [ActionName("Insert")]
+        [HttpPost("api/[controller]/[action]")]
+        public IActionResult InsertWeatherMetricsData([FromBody]  WeatherMetricsLogDTO weatherMetricsLogDTO) {
 
             Int64? weatherMetricsLogID = null;
-
 
             try
             {
 
-                weatherMetricsLogID = weatherMetricsDataService.InsertWeatherMetricsData(weatherMetricsLogDTO);
+                weatherMetricsLogID = _weatherMetricsDataService.InsertWeatherMetricsData(weatherMetricsLogDTO);
 
                 return Ok(weatherMetricsLogID);
 
@@ -52,22 +48,20 @@ namespace WeatherMetricsWebAPI.Controllers
             }
             finally
             {
-                weatherMetricsDataService = null;
+                
 
             }
         }
 
-        [HttpPost(Name = "UpdateWeatherMetricsData")]
-        public IActionResult UpdateWeatherMetricsData(WeatherMetricsLogDTO weatherMetricsLogDTO) {
+        [ActionName("Update")]
+        [HttpPost("api/[controller]/[action]")]
+        public IActionResult UpdateWeatherMetricsData([FromBody]  WeatherMetricsLogDTO weatherMetricsLogDTO) {
 
-            string? dBConnectionString = _configuration.GetConnectionString("DBConnection");
-
-            WeatherMetricsDataService? weatherMetricsDataService = new WeatherMetricsDataService(dBConnectionString);
-
+          
             try
             {
 
-                weatherMetricsDataService.UpdateWeatherMetricsData(weatherMetricsLogDTO);
+                _weatherMetricsDataService.UpdateWeatherMetricsData(weatherMetricsLogDTO);
 
 
                 return Ok();
@@ -82,24 +76,22 @@ namespace WeatherMetricsWebAPI.Controllers
             finally
             {
 
-                weatherMetricsDataService = null;
+               
 
             }
 
 
         }
 
-        [HttpDelete(Name = "DeleteWeatherMetricsData")]
+        [ActionName("Delete")]
+        [HttpPost("api/[controller]/[action]/{weatherMetricsLogID}")]
         public IActionResult Delete(Int64 weatherMetricsLogID) {
 
-            string? dBConnectionString = _configuration.GetConnectionString("DBConnection");
-
-            WeatherMetricsDataService? weatherMetricsDataService = new WeatherMetricsDataService(dBConnectionString);
-
+           
             try
             {
 
-                weatherMetricsDataService.DeleteWeatherMetricsData(weatherMetricsLogID);    
+                _weatherMetricsDataService.DeleteWeatherMetricsData(weatherMetricsLogID);    
 
 
                 return Ok();
@@ -113,25 +105,26 @@ namespace WeatherMetricsWebAPI.Controllers
             }
             finally
             {
-                weatherMetricsDataService = null;
+               
 
             }
 
 
         }
 
-        [HttpGet(Name = "GetWeatherMetricsData")]
+        [ActionName("Get")]
+        [HttpGet("api/[controller]/[action]/{weatherMetricsLogID}")]
         public IActionResult GetWeatherMetricsData(Int64 weatherMetricsLogID) {
 
             WeatherMetricsLogDTO? weatherMetricsLogDTO = null;
-            string? dBConnectionString = _configuration.GetConnectionString("DBConnection");
-            WeatherMetricsDataService? weatherMetricsDataService = new WeatherMetricsDataService(dBConnectionString);
+           
+           
 
             try
             {
                
 
-                weatherMetricsLogDTO = weatherMetricsDataService.GetWeatherMetricsData(weatherMetricsLogID);
+                weatherMetricsLogDTO = _weatherMetricsDataService.GetWeatherMetricsData(weatherMetricsLogID);
 
 
                 return Ok(weatherMetricsLogDTO);
@@ -146,31 +139,24 @@ namespace WeatherMetricsWebAPI.Controllers
             finally
             {
 
-                weatherMetricsDataService = null;
+               
 
 
             }
-
-
-            
+    
  
         }
 
-        [HttpGet(Name = "GetWeatherMetricsData")]
-        public IActionResult GetWeatherMetricsData(DateTime startDate, DateTime endDate) {
+        [ActionName("Get")]
+        [HttpGet("api/[controller]/[action]/{startDate}/{endDate}")]
+        public IActionResult GetWeatherMetricsDataRange(DateTime startDate, DateTime endDate) {
 
             IEnumerable<WeatherMetricsLogDTO>? weatherMetricsLogDTOs = null;
-
-            string? dBConnectionString = _configuration.GetConnectionString("DBConnection");
-
-            WeatherMetricsDataService? weatherMetricsDataService = new WeatherMetricsDataService(dBConnectionString);
 
             try
             {
                 
-
-
-                weatherMetricsLogDTOs = weatherMetricsDataService.GetWeatherMetricsData(startDate, endDate);    
+                weatherMetricsLogDTOs = _weatherMetricsDataService.GetWeatherMetricsData(startDate, endDate);    
 
 
                 return Ok(weatherMetricsLogDTOs);
@@ -184,8 +170,7 @@ namespace WeatherMetricsWebAPI.Controllers
             }
             finally
             {
-                weatherMetricsDataService = null;
-
+              
             }
        
         }

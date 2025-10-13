@@ -1,6 +1,6 @@
-@WeatherMetricsWebAPI_HostAddress = http://localhost:5126
+@WeatherMetricsWebAPI_HostAddress = http://localhost:5126/
 
-GET {{WeatherMetricsWebAPI_HostAddress}}/weatherforecast/
+GET {{WeatherMetricsWebAPI_HostAddress}}/weathermetrics/
 Accept: application/json
 
 ###

@@ -1,0 +1,134 @@
+ /** Weather Metrics Web Application **/
+
+
+
+#1
+
+Install Node.js
+
+#2
+
+// The Angular CLI is a command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications directly from a command shell.
+// ng executable
+
+npm install -g @angular/cli
+
+#3
+
+Create the Angular Application in Visual Studio
+
+#4
+
+Update directory structure
+
+
+#5
+
+
+BootStrap
+
+From the Root of Application
+
+npm install bootstrap bootstrap-icons
+
+installs the follow direcory: \node_modules\bootstrap
+
+
+Change the angular.json file and add the bootstrap.scss, bootstrap-icons.css and bootstrap.bundle.min.js files
+
+
+ "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+
+
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+
+
+#6
+
+Add Feature Components
+
+
+\src\app\features\home\
+
+
+ng generate component  home
+
+
+\src\app\features\weathermetrics\components
+
+ng generate component  weathermetrics
+
+
+\src\app\features\weathermetricsdevices\components
+
+ng generate component  weathermetricsdevices
+
+
+#7
+
+
+Edit:  app-routing.module.ts
+
+import { HomeComponent } from './features/home/components/home/home.component';
+import { WeathermetricsComponent } from './features/weathermetrics/components/weathermetrics/weathermetrics.component';
+import { WeathermetricsdevicesComponent  } from './features/weathermetricsdevices/components/weathermetricsdevices/weathermetricsdevices.component';
+
+const routes: Routes = [
+
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'weathermetricsdata',
+    component: WeathermetricsComponent
+  },
+  {
+    path: 'weathermetricsdevices',
+    component: WeathermetricsdevicesComponent
+  }
+
+];
+
+
+#8
+
+
+Angular CLI Command
+
+ng add @angular/material
+
+
+
+app.module.ts
+
+import { MatToolbarModule } from '@angular/material/toolbar'; // Import MatToolbarModule
+
+ imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatToolbarModule // Add MatToolbarModule to the imports array
+  ],
+
+
+
+#8
+
+Edit app.component.html
+
+
+#9
+
+Run The Application
+
+ng serve

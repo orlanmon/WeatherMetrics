@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.1738743">
+  <PropertyGroup>
+    <StartupCommand>npm start</StartupCommand>
+    <JavaScriptTestFramework>Jasmine</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\WeatherMetricsWebUI\browser\</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\core\services\" />
+    <Folder Include="src\app\features\home\components\" />
+    <Folder Include="src\app\features\weathermetricsdevices\components\" />
+    <Folder Include="src\app\features\weathermetrics\components\" />
+    <Folder Include="src\app\models\" />
+    <Folder Include="src\app\shared\components\" />
+    <Folder Include="src\app\shared\directives\" />
+    <Folder Include="src\app\shared\pipes\" />
+    <Folder Include="src\assets\images\" />
+    <Folder Include="src\assets\styles\" />
+    <Folder Include="src\environments\" />
+  </ItemGroup>
+</Project>

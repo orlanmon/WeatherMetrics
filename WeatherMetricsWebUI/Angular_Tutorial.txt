@@ -141,6 +141,23 @@ Note:  Creates folder with component name
 ng generate component footer
 
 
+#10
+
+Create Services
+
+Note:  Does Not Create the Subdirectory You Must Specify
+
+\src\app\features\weathermetrics\services
+
+
+ng generate service weathermetricsdata\weathermetricsdata
+
+
+\src\app\features\weathermetricsdevices\services
+
+
+ng generate service weathermetricsdevices\weathermetricsdevices
+
 
 #30
 

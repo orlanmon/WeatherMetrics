@@ -54,8 +54,9 @@ Change the angular.json file and add the bootstrap.scss, bootstrap-icons.css and
 Add Feature Components
 
 
-\src\app\features\home\
+\src\app\features\home\components
 
+Note:  Creates folder with component name
 
 ng generate component  home
 
@@ -128,6 +129,20 @@ Edit app.component.html
 
 
 #9
+
+Create a Footer in app\layout\components
+
+
+
+\src\app\layout\components\
+
+Note:  Creates folder with component name
+
+ng generate component footer
+
+
+
+#30
 
 Run The Application
 

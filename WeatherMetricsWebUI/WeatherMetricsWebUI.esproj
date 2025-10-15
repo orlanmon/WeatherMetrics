@@ -12,6 +12,7 @@
     <Folder Include="src\app\features\home\components\" />
     <Folder Include="src\app\features\weathermetricsdevices\components\" />
     <Folder Include="src\app\features\weathermetrics\components\" />
+    <Folder Include="src\app\layout\components\" />
     <Folder Include="src\app\models\" />
     <Folder Include="src\app\shared\components\" />
     <Folder Include="src\app\shared\directives\" />

@@ -1,4 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.toolbar {
+  background-color: black;
+  color: white;
+}
+
+.navtoolbar {
+  background-color: gray;
+  color: white;
+}
+
+.basic-container {
+  padding: 50px;
+  margin-left: 10px;
+}
+
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+li {
+  padding: 10px;
+}
+
+.list-item {
+  font-size: smaller;
+  text-decoration: none !important;
+  color: black;
+}

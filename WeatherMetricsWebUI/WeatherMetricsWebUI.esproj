@@ -15,9 +15,9 @@
     <Folder Include="src\app\features\weathermetrics\components\" />
     <Folder Include="src\app\features\weathermetrics\services\" />
     <Folder Include="src\app\layout\components\" />
-    <Folder Include="src\app\models\" />
     <Folder Include="src\app\shared\components\" />
     <Folder Include="src\app\shared\directives\" />
+    <Folder Include="src\app\shared\services\" />
     <Folder Include="src\app\shared\pipes\" />
     <Folder Include="src\assets\images\" />
     <Folder Include="src\assets\styles\" />

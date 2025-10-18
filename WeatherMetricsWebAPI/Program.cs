@@ -48,8 +48,8 @@ namespace WeatherMetricsWebAPI
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.MapOpenApi();
 
                 // Add Swagger Support
@@ -57,7 +57,7 @@ namespace WeatherMetricsWebAPI
                 app.UseSwaggerUI();
 
 
-            }
+            //}
 
             app.UseHttpsRedirection();
             app.UseAuthorization();

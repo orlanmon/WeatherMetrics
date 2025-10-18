@@ -1,1 +1,48 @@
-<p>Weather Metrics Data Page</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Column -->
+  <ng-container matColumnDef="WeatherMetricsLogId">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.WeatherMetricsLogId}} </td>
+  </ng-container>
+
+  <!-- Column -->
+  <ng-container matColumnDef="BarometricPressure">
+    <th mat-header-cell *matHeaderCellDef> Barometric Pressure </th>
+    <td mat-cell *matCellDef="let element"> {{element.BarometricPressure}} </td>
+  </ng-container>
+
+  <!-- Column -->
+  <ng-container matColumnDef="Humidity">
+    <th mat-header-cell *matHeaderCellDef> Humidity </th>
+    <td mat-cell *matCellDef="let element"> {{element.Humidity}} </td>
+  </ng-container>
+
+  <!-- Column -->
+  <ng-container matColumnDef="TemperatureCelsius">
+    <th mat-header-cell *matHeaderCellDef> Temperature Celsius </th>
+    <td mat-cell *matCellDef="let element"> {{element.TemperatureCelsius}} </td>
+  </ng-container>
+
+  <!-- Column -->
+  <ng-container matColumnDef="WindSpeed">
+    <th mat-header-cell *matHeaderCellDef> WindSpeed </th>
+    <td mat-cell *matCellDef="let element"> {{element.WindSpeed}} </td>
+  </ng-container>
+
+  <!-- Column -->
+  <ng-container matColumnDef="WindDirection">
+    <th mat-header-cell *matHeaderCellDef> WindDirection </th>
+    <td mat-cell *matCellDef="let element"> {{element.WindDirection}} </td>
+  </ng-container>
+
+  <!-- Column -->
+  <ng-container matColumnDef="Entry Date">
+    <th mat-header-cell *matHeaderCellDef> EntryDate </th>
+    <td mat-cell *matCellDef="let element"> {{element.EntryDate}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

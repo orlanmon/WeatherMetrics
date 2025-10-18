@@ -159,8 +159,19 @@ ng generate service weathermetricsdata\weathermetricsdata
 ng generate service weathermetricsdevices\weathermetricsdevices
 
 
+\src\app\shared\services\
+
+ng generate service httpservice\httpservice
+
+
+#11
+
+Create Model
+
+
+
 #30
 
 Run The Application
 
-ng serve
+ng serve 

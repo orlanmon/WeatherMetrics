@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table'
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { MatTableModule } from '@angular/material/table'
     AppRoutingModule,
     MatToolbarModule,  // Add MatToolbarModule to the imports array
     MatTableModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

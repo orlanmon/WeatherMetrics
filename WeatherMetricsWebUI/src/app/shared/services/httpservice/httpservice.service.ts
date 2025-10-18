@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: 'root' // Or specify a module if you want to limit its scope
 })
 
-export default class HttpService {
+export class HttpService {
 
   public baseApiUrl: string = "";
 

@@ -23,6 +23,10 @@ export class WeathermetricsComponent {
 
     this.weathermetricsdataServ = weathermetricsdataService;
 
+
+    this.weathermetricsdataServ.getWeatherMetricLogs().subscribe(result => this.weathermetricsData = result)
+
+
   }
 
 

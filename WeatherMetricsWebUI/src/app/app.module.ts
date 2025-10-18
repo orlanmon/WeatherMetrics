@@ -7,7 +7,7 @@ import { WeathermetricsComponent } from './features/weathermetrics/components/we
 import { WeathermetricsdevicesComponent } from './features/weathermetricsdevices/components/weathermetricsdevices/weathermetricsdevices.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FooterComponent } from './layout/components/footer/footer.component';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [

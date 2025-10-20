@@ -10,6 +10,7 @@ import { FooterComponent } from './layout/components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table'
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,4 +29,6 @@ import { MatTableModule } from '@angular/material/table'
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

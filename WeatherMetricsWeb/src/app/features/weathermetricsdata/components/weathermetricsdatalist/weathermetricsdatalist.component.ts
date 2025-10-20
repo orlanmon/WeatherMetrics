@@ -23,14 +23,14 @@ export class WeathermetricsdatalistComponent {
 
    this.weathermetricsdataServ = weathermetricsdataService;
 
-   this.weathermetricsdataServ.getWeatherMetricLogs().subscribe(result => this.weathermetricsData = result)
+   //this.weathermetricsdataServ.getWeatherMetricLogs().subscribe(result => this.weathermetricsData = result)
 
 
  }  
 
   ngOnInit() {
 
-    ;//this.weathermetricsdataServ.getWeatherMetricLogs().subscribe(result => this.weathermetricsData = result)
+    this.weathermetricsdataServ.getWeatherMetricLogs().subscribe(result => this.weathermetricsData = result)
 
   }
 

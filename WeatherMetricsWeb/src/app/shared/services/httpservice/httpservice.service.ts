@@ -11,7 +11,8 @@ export class HttpService {
   public baseApiUrl: string = "";
 
   constructor(private http: HttpClient) { }
-
+  
+  /*
   public get<T>(url: string, options?: { token?: string }): Observable<T> {
     const uri = this.fullUri(url);
     const result = this.http.get<T>(uri, { headers: this.headers_json(options?.token) });
@@ -27,6 +28,26 @@ export class HttpService {
   public put<T>(url: string, body: any, options?: { token?: string }): Observable<T> {
     const uri = this.fullUri(url);
     const result = this.http.put<T>(uri, body, { headers: this.headers_json(options?.token) });
+    return result;
+  }
+  */
+
+
+  public get<T>(url: string): Observable<T> {
+    const uri = this.fullUri(url);
+    const result = this.http.get<T>(uri);
+    return result;
+  }
+
+  public post<T>(url: string, body: any ): Observable<T> {
+    const uri = this.fullUri(url);
+    const result = this.http.post<T>(uri, body);
+    return result;
+  }
+
+  public put<T>(url: string, body: any): Observable<T> {
+    const uri = this.fullUri(url);
+    const result = this.http.put<T>(uri, body);
     return result;
   }
 

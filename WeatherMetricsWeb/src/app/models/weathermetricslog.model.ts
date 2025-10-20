@@ -1,29 +1,29 @@
 export class WeatherMetricsLog {
 
-  constructor(WeatherMetricsLogId: bigint, BarometricPressure: number, Humidity: number, TemperatureCelsius: number, WindSpeed: number, WindDirection: string, EntryDate: Date) {
-    this.WeatherMetricsLogId = WeatherMetricsLogId;
-    this.BarometricPressure = BarometricPressure;
-    this.Humidity = Humidity;
-    this.TemperatureCelsius = TemperatureCelsius;
-    this.WindSpeed = WindSpeed;
-    this.WindDirection = WindDirection;
-    this.EntryDate = EntryDate;
+  constructor(weatherMetricsLogId: bigint, barometricPressure: number, humidity: number, temperatureCelsius: number, windSpeed: number, windDirection: string, entryDate: Date) {
+    this.weatherMetricsLogId = weatherMetricsLogId;
+    this.barometricPressure = barometricPressure;
+    this.humidity = humidity;
+    this.temperatureCelsius = temperatureCelsius;
+    this.windSpeed = windSpeed;
+    this.windDirection = windDirection;
+    this.entryDate = entryDate;
 
   }
 
-  WeatherMetricsLogId : bigint;
+  weatherMetricsLogId : bigint;
 
-  BarometricPressure: number;
+  barometricPressure: number;
 
-  Humidity: number;
+  humidity: number;
 
-  TemperatureCelsius: number;
+  temperatureCelsius: number;
 
-  WindSpeed: number;
+  windSpeed: number;
 
-  WindDirection: string;
+  windDirection: string;
 
-  EntryDate: Date;
+  entryDate: Date;
 
 }
 

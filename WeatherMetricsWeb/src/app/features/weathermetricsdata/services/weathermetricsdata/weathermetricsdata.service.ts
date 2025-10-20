@@ -15,7 +15,7 @@ export class WeathermetricsdataService {
    
    this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
 
-   const result = this.httpService.get<WeatherMetricsLog>("/api/WeatherMetrics/Get/1", { token: undefined });
+   const result = this.httpService.get<WeatherMetricsLog>("/api/WeatherMetrics/Get/1");
    return result;
 
  }
@@ -24,7 +24,7 @@ export class WeathermetricsdataService {
 
    this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
 
-   const result = this.httpService.get<WeatherMetricsLog[]>("/api/WeatherMetrics/Get/2025-10-01/2025-10-18", { token: undefined });
+   const result = this.httpService.get<WeatherMetricsLog[]>("/api/WeatherMetrics/Get/2025-10-01/2025-10-18");
    return result;
 
  }

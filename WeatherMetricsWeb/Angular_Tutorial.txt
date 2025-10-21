@@ -255,3 +255,7 @@ Create weathermetricsdatalist component
 Run The Application
 
 ng serve 
+
+
+
+Angular HttpClient for DELETE what is function return value

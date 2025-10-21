@@ -79,6 +79,7 @@ namespace WeatherMetricsWebAPI
                 }
 
                 // Configure AnyOriginPolicy (if needed)
+                /*
                 var anyOriginSection = builder.Configuration.GetSection("CorsSettings:AnyOriginPolicy");
                 if (anyOriginSection.Exists() && anyOriginSection.GetValue<bool>("AllowAnyOrigin"))
                 {
@@ -89,6 +90,8 @@ namespace WeatherMetricsWebAPI
                               .AllowAnyMethod();
                     });
                 }
+                */
+
             });
 
 
@@ -114,7 +117,8 @@ namespace WeatherMetricsWebAPI
             app.MapControllers(); // Maps attribute-routed controllers
 
 
-            app.UseCors();
+            app.UseCors("SpecificOriginsPolicy");
+
 
 
 

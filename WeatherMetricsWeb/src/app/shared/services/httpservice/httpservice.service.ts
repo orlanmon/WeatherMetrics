@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -45,6 +45,12 @@ export class HttpService {
     return result;
   }
 
+  public delete(url: string): Observable<HttpResponse<any>> {
+    const uri = this.fullUri(url);
+    const result = this.http.delete(uri,  { observe: 'response' });
+    return result;
+  }
+  
   public put<T>(url: string, body: any): Observable<T> {
     const uri = this.fullUri(url);
     const result = this.http.put<T>(uri, body);

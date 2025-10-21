@@ -10,6 +10,11 @@ builder.Services.AddScoped<IWeatherMetricsDataService, WeatherMetricsDataService
 Install-Package Swashbuckle.AspNetCore -Version 6.6.2
 
 
+// Add CORS Support
+
+Install-Package Microsoft.AspNetCore.Cors
+
+
 //  Azure SQL Server Database
 
 // Connection String

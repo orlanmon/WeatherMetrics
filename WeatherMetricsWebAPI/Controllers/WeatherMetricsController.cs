@@ -84,7 +84,7 @@ namespace WeatherMetricsWebAPI.Controllers
         }
 
         [ActionName("Delete")]
-        [HttpPost("api/[controller]/[action]/{weatherMetricsLogID}")]
+        [HttpDelete("api/[controller]/[action]/{weatherMetricsLogID}")]
         public IActionResult Delete(Int64 weatherMetricsLogID) {
 
            

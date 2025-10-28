@@ -11,6 +11,7 @@ namespace WeatherMetricsWebAPI.ServicesImplementation
         public void DeleteWeatherMetricsData(Int64 weatherMetricsLogID);
         public WeatherMetricsLogDTO GetWeatherMetricsData(Int64 weatherMetricsLogID);
         public IEnumerable<WeatherMetricsLogDTO> GetWeatherMetricsData(DateTime startDate, DateTime endDate );
+        public IEnumerable<WeatherMetricsLogDTO> GetWeatherMetricsData();
 
     }
 }

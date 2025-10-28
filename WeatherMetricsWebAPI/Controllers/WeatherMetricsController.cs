@@ -112,6 +112,7 @@ namespace WeatherMetricsWebAPI.Controllers
 
         }
 
+
         [ActionName("Get")]
         [HttpGet("api/[controller]/[action]/{weatherMetricsLogID}")]
         public IActionResult GetWeatherMetricsData(Int64 weatherMetricsLogID) {
@@ -173,6 +174,37 @@ namespace WeatherMetricsWebAPI.Controllers
               
             }
        
+        }
+
+
+
+        [ActionName("Get")]
+        [HttpGet("api/[controller]/[action]")]
+        public IActionResult GetWeatherMetricsAll()
+        {
+
+            IEnumerable<WeatherMetricsLogDTO>? weatherMetricsLogDTOs = null;
+
+            try
+            {
+
+                weatherMetricsLogDTOs = _weatherMetricsDataService.GetWeatherMetricsData();
+
+
+                return Ok(weatherMetricsLogDTOs);
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "An unexpected server error occurred. " + ex.Message);
+
+            }
+            finally
+            {
+
+            }
+
         }
 
     }

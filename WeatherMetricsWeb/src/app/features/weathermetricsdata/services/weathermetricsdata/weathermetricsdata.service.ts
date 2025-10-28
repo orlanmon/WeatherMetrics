@@ -3,6 +3,7 @@ import { HttpService } from '../../../../shared/services/httpservice/httpservice
 import { WeatherMetricsLog } from '../../../../models/weathermetricslog.model';
 import { Observable } from 'rxjs';
 import { HttpResponse } from "@angular/common/http";
+import { ResponseResult } from '../../../../shared/services/httpservice/responseresult';
 
 @Injectable({
   providedIn: 'root'
@@ -11,38 +12,57 @@ export class WeathermetricsdataService {
 
  constructor(private httpService: HttpService) { }
 
- getWeatherMetricLog(weatherMetricsLogId : bigint): Observable<WeatherMetricsLog> {
+  
+ getWeatherMetricLog(weatherMetricsLogId : bigint): Observable<ResponseResult<WeatherMetricsLog>> {
 
-   
    this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
 
-   const result = this.httpService.get<WeatherMetricsLog>("/api/WeatherMetrics/Get/${weatherMetricsLogId}");
+   const result = this.httpService.get_response<WeatherMetricsLog>(`/api/WeatherMetrics/Get/${weatherMetricsLogId}`);
    return result;
 
  }
 
- getWeatherMetricLogs(): Observable<WeatherMetricsLog[]> {
+  // Date Format: 2025-10-01
+  getWeatherMetricLogs(startDate : string, endDate : string ): Observable<ResponseResult<WeatherMetricsLog[]>> {
+   this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
+   const result = this.httpService.get_response<WeatherMetricsLog[]>(`/api/WeatherMetrics/Get/${startDate}/${endDate}`);
+   return result;
+ }
+
+  getWeatherMetricLogsAll(): Observable<ResponseResult<WeatherMetricsLog[]>> {
+   this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
+   const result = this.httpService.get_response<WeatherMetricsLog[]>("/api/WeatherMetrics/Get");
+   return result;
+ }
+
+ updateWeatherMetricLog(weatherMetricLog: WeatherMetricsLog): Observable<ResponseResult<any>> {
+   this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
+   const result = this.httpService.post_response<any>("/api/WeatherMetrics/Update", weatherMetricLog );
+   return result;
+ }
+
+insertWeatherMetricLog(weatherMetricLog: WeatherMetricsLog): Observable<ResponseResult<BigInteger>> {
+   this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
+   const result = this.httpService.post_response<BigInteger>("/api/WeatherMetrics/Insert", weatherMetricLog );
+   return result;
+ }
+
+
+deleteWeatherMetricLog(weatherMetricsLogId : bigint): Observable<ResponseResult<any>> {
 
    this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
 
-   const result = this.httpService.get<WeatherMetricsLog[]>("/api/WeatherMetrics/Get/2025-10-01/2025-10-18");
+   const result =  this.httpService.delete_response<any>(`/api/WeatherMetrics/Delete/${weatherMetricsLogId}`);
+
    return result;
 
  }
 
-deleteWeatherMetricLog(weatherMetricsLogId : bigint): Observable<HttpResponse<any>> {
+  
 
-   this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
-
-   const result =  this.httpService.delete("/api/WeatherMetrics/Delete/${weatherMetricsLogId}");
-
-   return result;
-
- }
 
 
 
 }
-
 
 

@@ -1,5 +1,13 @@
+<div>
+
+<button mat-icon-button id="btn_addweathermetriclog">
+    <mat-icon>add</mat-icon>
+</button>
+  
 <mat-table [dataSource]="weathermetricsData" class="mat-elevation-z8">
 
+  
+  
   <!-- Column -->
   <ng-container matColumnDef="WeatherMetricsLogId">
     <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -49,6 +57,10 @@
         <button mat-icon-button color="warn" (click)="deleteRow(row)">
           <mat-icon>delete</mat-icon>
         </button>
+        &nbsp;
+        <button mat-icon-button color="primary" (click)="editRow(row)">
+        <mat-icon>edit</mat-icon>
+        </button>
       </td>
   </ng-container>
 
@@ -57,3 +69,4 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </mat-table>
 
+</div>

@@ -240,11 +240,34 @@ ng generate service httpservice\httpservice
 Create Model
 
 
+#12
+
+
+Create Shared Confirm Message Box
+
+ng generate component confirm-dialog
+
+
+
 
 #12
 
 
 Create weathermetricsdatalist component
+
+Using MatTableModule  Online Examples
+
+
+
+#14
+
+Modify WeathermetricsdatadetailComponent
+
+Using Material Design Components and Reactive Forms
+
+
+
+
 
 
 

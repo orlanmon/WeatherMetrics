@@ -154,5 +154,36 @@ namespace WeatherMetricsWebAPI.ServicesImplementation
         }
 
 
+        public IEnumerable<WeatherMetricsLogDTO> GetWeatherMetricsData()
+        {
+
+            using (WeatherMetricsDbContext weatherMetricsDbContext = new WeatherMetricsDbContext(_dBConnectionString))
+            {
+
+                List<WeatherMetricsLogDTO> weatherMetricsLogDTOs = new List<WeatherMetricsLogDTO>();
+                IEnumerable<WeatherMetricsLog>? weatherMetricsLogReturn = null;
+
+
+                weatherMetricsLogReturn = weatherMetricsDbContext.WeatherMetricsLogs.OrderByDescending(wml => wml.WeatherMetricsLogId); 
+
+                if (weatherMetricsLogReturn != null)
+                {
+
+
+                    foreach (WeatherMetricsLog weatherMetricsLog in weatherMetricsLogReturn)
+                    {
+
+                        weatherMetricsLogDTOs.Add(_objAutoMapper.Map<WeatherMetricsLog, WeatherMetricsLogDTO>(weatherMetricsLog));
+
+
+                    }
+
+                }
+
+                return weatherMetricsLogDTOs;
+            }
+
+        }
+
     }
 }

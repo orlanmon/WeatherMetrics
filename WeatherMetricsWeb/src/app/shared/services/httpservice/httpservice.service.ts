@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
+import { ResponseResult } from './responseresult';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class HttpService {
   public baseApiUrl: string = "";
 
   constructor(private http: HttpClient) { }
-  
+
   /*
   public get<T>(url: string, options?: { token?: string }): Observable<T> {
     const uri = this.fullUri(url);
@@ -39,21 +40,75 @@ export class HttpService {
     return result;
   }
 
+  public get_response<T>(url: string): Observable<ResponseResult<T>> {
+    
+    const uri = this.fullUri(url);
+    
+    var result = this.http.get<T>(uri, { observe: 'response' })
+      .pipe(map((response: HttpResponse<T>) => {
+        const responseResult: ResponseResult<T> = { statusCode: response.status, data: response.body };
+        return responseResult;
+      }))
+
+    return result;
+  }
+
   public post<T>(url: string, body: any ): Observable<T> {
     const uri = this.fullUri(url);
     const result = this.http.post<T>(uri, body);
     return result;
   }
 
-  public delete(url: string): Observable<HttpResponse<any>> {
+  public post_response<T>(url: string, body: any ): Observable<ResponseResult<T>> {
+    
     const uri = this.fullUri(url);
-    const result = this.http.delete(uri,  { observe: 'response' });
+
+     var result = this.http.post<T>(uri, body, { observe: 'response' })
+      .pipe(map((response: HttpResponse<T>) => {
+        const responseResult: ResponseResult<T> = { statusCode: response.status, data: response.body };
+        return responseResult;
+      }))
+
     return result;
   }
-  
+
   public put<T>(url: string, body: any): Observable<T> {
     const uri = this.fullUri(url);
     const result = this.http.put<T>(uri, body);
+    return result;
+  }
+
+
+  public put_response<T>(url: string, body: any): Observable<ResponseResult<T>> {
+
+    const uri = this.fullUri(url);
+    
+     var result = this.http.put<T>(uri, body, { observe: 'response' })
+      .pipe(map((response: HttpResponse<T>) => {
+        const responseResult: ResponseResult<T> = { statusCode: response.status, data: response.body };
+        return responseResult;
+      }))
+    
+    return result;
+  }
+
+
+  public delete<T>(url: string): Observable<T> {
+    const uri = this.fullUri(url);
+    const result = this.http.delete<T>(uri);
+    return result;
+  }
+
+public delete_response<T>(url: string): Observable<ResponseResult<T>> {
+    
+    const uri = this.fullUri(url);
+    
+    var result = this.http.delete<T>(uri, { observe: 'response' })
+      .pipe(map((response: HttpResponse<T>) => {
+        const responseResult: ResponseResult<T> = { statusCode: response.status, data: response.body };
+        return responseResult;
+      }))
+
     return result;
   }
 

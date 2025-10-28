@@ -1,1 +1,45 @@
-<p>weathermetricsdatadetail works!</p>
+<form [formGroup]="webForm" (ngSubmit)="onSubmit()">
+
+<div class="form-group">
+    <label for="barometricPressure">Barometric Pressure:</label>
+    <input id="barometricPressure" type="number" formControlName="barometricPressure">
+    <div *ngIf="webForm.get('barometricPressure')?.invalid && webForm.get('barometricPressure')?.touched" class="error-message">
+      Barometric Pressure is required.
+    </div>
+  </div>
+
+<div class="form-group">
+    <label for="humidity">Humidity:</label>
+    <input id="humidity" type="number" formControlName="humidity">
+    <div *ngIf="webForm.get('humidity')?.invalid && webForm.get('humidity')?.touched" class="error-message">
+      Humidity is required.
+    </div>
+  </div>
+
+<div class="form-group">
+    <label for="temperatureCelsius">Temperature in Celsius:</label>
+    <input id="temperatureCelsius" type="number" formControlName="temperatureCelsius">
+    <div *ngIf="webForm.get('temperatureCelsius')?.invalid && webForm.get('temperatureCelsius')?.touched" class="error-message">
+      Temperature in Celsius is required.
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="windSpeed">Wind Speed:</label>
+    <input id="windSpeed" type="number" formControlName="windSpeed">
+    <div *ngIf="webForm.get('windSpeed')?.invalid && webForm.get('windSpeed')?.touched" class="error-message">
+      Wind Speed is required.
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="windDirection">Wind Direction:</label>
+    <input id="windDirection" type="text" formControlName="windDirection">
+    <div *ngIf="webForm.get('windDirection')?.invalid && webForm.get('windDirection')?.touched" class="error-message">
+      Wind Direction is required.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="webForm.invalid">Submit</button>
+
+</form>

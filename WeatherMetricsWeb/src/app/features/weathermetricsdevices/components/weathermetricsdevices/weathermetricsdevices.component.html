@@ -1,1 +1,38 @@
+<div class="container containerborder">
 
+<div class="row">
+
+    <div class="mb-3 col-md-4">
+        <label for="selectDevice">Select Weather Metrics Device</label>
+
+        <select class="form-select" aria-label="Select Weather Metrics Device" (selectionchange)="onDeviceSelectionChange($event);">
+        <option selected>Open this select menu</option>
+        <option value="1">Weather Metrics Device One</option>
+        <option value="2">Weather Metrics Device Two</option>
+        <option value="3">Weather Metrics Device Three</option>
+        </select>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+     <div class="mb-3 col-md-4">
+    <label for="deviceUptime">Weather Metrics Device Uptime</label>
+    <input id="deviceUptime" type="text" class="form-control" readonly value="{{this.strIoTDeviceUptime}}" >
+    </div>
+
+</div>
+
+<div class="row">
+     <div class="mb-3 col-md-4">
+
+        <button type="submit" class="btn btn-primary" (click)="onEnable();" >Enable</button>
+        <button type="submit" class="btn btn-primary" (click)="onDisable();" >Disable</button>
+
+     </div>
+     
+</div>
+
+</div>

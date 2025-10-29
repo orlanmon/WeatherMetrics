@@ -65,7 +65,7 @@ namespace WeatherMetricsWebAPI.ServicesImplementation
 
                 weatherMetricsLog = _objAutoMapper.Map<WeatherMetricsLogDTO, WeatherMetricsLog>(weatherMetricsLogDTO);
 
-                weatherMetricsLogToUpdate = weatherMetricsDbContext.WeatherMetricsLogs.FirstOrDefault(weatherMetricsLog => weatherMetricsLog.WeatherMetricsLogId == weatherMetricsLog.WeatherMetricsLogId);
+                weatherMetricsLogToUpdate = weatherMetricsDbContext.WeatherMetricsLogs.FirstOrDefault(weatherMetricsLog => weatherMetricsLog.WeatherMetricsLogId == weatherMetricsLogDTO.WeatherMetricsLogId);
 
 
                 if(weatherMetricsLogToUpdate != null)

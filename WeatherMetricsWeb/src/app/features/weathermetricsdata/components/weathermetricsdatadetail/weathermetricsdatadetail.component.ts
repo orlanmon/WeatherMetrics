@@ -4,6 +4,9 @@ import { WeathermetricsdataService } from '../../services/weathermetricsdata/wea
 import { ActivatedRoute } from '@angular/router';
 import { WeatherMetricsLog} from '../../../../models/weathermetricslog.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogContent } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-weathermetricsdatadetail',
@@ -19,27 +22,80 @@ export class WeathermetricsdatadetailComponent {
    weatherMetricsLog! : WeatherMetricsLog;
 
 
-   constructor(private route: ActivatedRoute, private weathermetricsdataServ: WeathermetricsdataService) {
-
+   constructor(private route: ActivatedRoute, private weathermetricsdataServ: WeathermetricsdataService, private router: Router, public dialog: MatDialog) {
 
    }
 
-    onSubmit(): void {
+    onSubmit(){
+
+      if(this.isAddMode) {
+
+        this.weatherMetricsLog = new WeatherMetricsLog(0,0,0,0,0,'', new Date());
+
+        // Pull Form Data into Model
+        this.weatherMetricsLog.barometricPressure = this.webForm.get('barometricPressure')?.value;
+        this.weatherMetricsLog.humidity = this.webForm.get('humidity')?.value;
+        this.weatherMetricsLog.temperatureCelsius = this.webForm.get('temperatureCelsius')?.value;
+        this.weatherMetricsLog.windDirection = this.webForm.get('windDirection')?.value;
+        this.weatherMetricsLog.windSpeed = this.webForm.get('windSpeed')?.value;
+        
+
+        this.weathermetricsdataServ.insertWeatherMetricLog(this.weatherMetricsLog).subscribe(result => {
+        if (result.statusCode == 200) {
+          
+          console.log("WeatherMetricsLog Added! WeatherMetricsLogID = #%d", result.data);
+
+          this.router.navigateByUrl("weathermetricsdata");
+
+        } else {
+
+            console.log("Error Occured with HTTTP Status Code: #%d", result.statusCode);
+            
 
 
+        }
+      });
+
+      } else {
+
+        // WeatherMetricsLog Is Already Initialized
+        this.weatherMetricsLog.barometricPressure = this.webForm.get('barometricPressure')?.value;
+        this.weatherMetricsLog.humidity = this.webForm.get('humidity')?.value;
+        this.weatherMetricsLog.temperatureCelsius = this.webForm.get('temperatureCelsius')?.value;
+        this.weatherMetricsLog.windDirection = this.webForm.get('windDirection')?.value;
+        this.weatherMetricsLog.windSpeed = this.webForm.get('windSpeed')?.value;
 
 
+          this.weathermetricsdataServ.updateWeatherMetricLog(this.weatherMetricsLog).subscribe(result => {
+        if (result.statusCode == 200) {
+          
+          console.log("WeatherMetricsLog Updated!");
 
-    }
+          this.router.navigateByUrl("weathermetricsdata");
+
+        } else {
+
+            console.log("Error Occured with HTTTP Status Code: #%d", result.statusCode);
+            
+        }
+      });
+      }
+
+    };
 
 
+    onReturn() {
+
+      this.router.navigateByUrl("weathermetricsdata");
+
+    };
 
 
    ngOnInit() {
     
     const id = this.route.snapshot.params['id']; // Get ID from route for edit mode
     
-    if( id == null ) {
+    if( id.length === 0 ) {
       this.isAddMode = true;
     } else {
       this.isAddMode = false;

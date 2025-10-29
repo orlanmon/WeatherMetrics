@@ -7,10 +7,11 @@ import { HttpResponse } from "@angular/common/http";
 import { MatDialog, MatDialogContent } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
+import { DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-weathermetricsdatalist',
-  imports: [MatTableModule, MatIconModule],
+  imports: [MatTableModule, MatIconModule, DatePipe],
   templateUrl: './weathermetricsdatalist.component.html',
   styleUrl: './weathermetricsdatalist.component.css',
   providers: [WeathermetricsdataService],
@@ -34,6 +35,13 @@ export class WeathermetricsdatalistComponent {
     this.LoadWeatherMetricsData();
 
   }
+
+
+  onAdd() {
+
+      this.router.navigateByUrl("weathermetricslog/");
+
+    };
 
 
 private LoadWeatherMetricsData() {

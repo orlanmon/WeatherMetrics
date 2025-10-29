@@ -1,6 +1,7 @@
 export class WeatherMetricsLog {
 
-  constructor(weatherMetricsLogId: bigint, barometricPressure: number, humidity: number, temperatureCelsius: number, windSpeed: number, windDirection: string, entryDate: Date) {
+
+  constructor(weatherMetricsLogId: number, barometricPressure: number, humidity: number, temperatureCelsius: number, windSpeed: number, windDirection: string, entryDate: Date) {
     this.weatherMetricsLogId = weatherMetricsLogId;
     this.barometricPressure = barometricPressure;
     this.humidity = humidity;
@@ -11,7 +12,7 @@ export class WeatherMetricsLog {
 
   }
 
-  weatherMetricsLogId : bigint;
+  weatherMetricsLogId : number;
 
   barometricPressure: number;
 

@@ -41,14 +41,14 @@ export class WeathermetricsdataService {
    return result;
  }
 
-insertWeatherMetricLog(weatherMetricLog: WeatherMetricsLog): Observable<ResponseResult<BigInteger>> {
+insertWeatherMetricLog(weatherMetricLog: WeatherMetricsLog): Observable<ResponseResult<number>> {
    this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
-   const result = this.httpService.post_response<BigInteger>("/api/WeatherMetrics/Insert", weatherMetricLog );
+   const result = this.httpService.post_response<number>("/api/WeatherMetrics/Insert", weatherMetricLog );
    return result;
  }
 
 
-deleteWeatherMetricLog(weatherMetricsLogId : bigint): Observable<ResponseResult<any>> {
+deleteWeatherMetricLog(weatherMetricsLogId : number): Observable<ResponseResult<any>> {
 
    this.httpService.baseApiUrl = "https://weathermetricswebapi-dev-b8g6a2ecfbewhxcu.canadaeast-01.azurewebsites.net";
 

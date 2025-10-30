@@ -3,10 +3,10 @@
 <div class="row">
 
     <div class="mb-3 col-md-4">
-        <label for="selectDevice">Select Weather Metrics Device</label>
+        <label for="selectDevice" class="mb-3">Select Weather Metrics Device</label>
 
-        <select class="form-select" aria-label="Select Weather Metrics Device" (selectionchange)="onDeviceSelectionChange($event);">
-        <option selected>Open this select menu</option>
+        <select class="form-select" aria-label="Select Weather Metrics Device" (change)="onDeviceSelectionChange($event);">
+        <option selected>Select a Weather Metrics Device</option>
         <option value="1">Weather Metrics Device One</option>
         <option value="2">Weather Metrics Device Two</option>
         <option value="3">Weather Metrics Device Three</option>
@@ -28,8 +28,10 @@
 <div class="row">
      <div class="mb-3 col-md-4">
 
-        <button type="submit" class="btn btn-primary" (click)="onEnable();" >Enable</button>
-        <button type="submit" class="btn btn-primary" (click)="onDisable();" >Disable</button>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary b-3" (click)="onEnable();" [disabled]="(isEnabled)"  >Enable</button>&nbsp;
+        <button type="submit" class="btn btn-primary b-3" (click)="onDisable();" [disabled]="(!isEnabled)" >Disable</button>
+        </div>
 
      </div>
      

@@ -25,12 +25,7 @@ constructor(private weathermetricsdevicesService : WeathermetricsdevicesService 
 
  ngOnInit() {
 
-    if ( this.isEnabled == undefined ) {
-
-    } else {
-
-    }
-    
+  
   }
 
   onEnable() {

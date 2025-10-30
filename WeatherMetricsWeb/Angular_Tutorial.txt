@@ -281,4 +281,45 @@ ng serve
 
 
 
-Angular HttpClient for DELETE what is function return value
+#31
+
+Configuration files
+
+https://medium.com/@hongtatyew/about-environment-ts-in-your-angular-applications-50646ab08c81
+
+\src\environment
+
+environment.ts
+environment.prod.ts
+
+angular.json
+
+For Production and Development Configurations
+
+Production
+
+"fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+
+
+Development
+
+"fileReplacements": [
+                {
+                  "replace": "src/environments/environment.prod.ts",
+                  "with": "src/environments/environment.ts"
+                }
+              ],
+
+
+#32
+
+
+
+
+ng build --configuration=production
+

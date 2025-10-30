@@ -4,6 +4,7 @@ import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar'; // Imp
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MatToolbar, FooterComponent, MatDialogModule],

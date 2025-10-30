@@ -319,7 +319,15 @@ Development
 #32
 
 
+https://codebuckets.com/2018/05/26/hosting-angular-in-iis-under-an-existing-website/
 
 
-ng build --configuration=production
+https://github.com/angular/angular/issues/11046
+
+
+provide(APP_BASE_HREF, { useValue: '/' }),
+
+
+
+ng build --configuration=production  --base-href /WeatherMetricsDataApplication/
 

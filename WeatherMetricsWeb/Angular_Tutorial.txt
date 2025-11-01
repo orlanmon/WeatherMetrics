@@ -363,6 +363,9 @@ Issues with installing as Application under IIS Site.
 
 Azure Static Web Application Install with GitHub Workflows
 
+https://www.geeksforgeeks.org/angular-js/how-to-use-azure-static-web-apps-to-deploy-an-angular-app/
+
+
 YAML
 
 name: Azure Static Web Apps CI/CD

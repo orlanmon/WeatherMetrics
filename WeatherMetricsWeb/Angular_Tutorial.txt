@@ -366,7 +366,7 @@ Azure Static Web Application Install with GitHub Workflows
 https://www.geeksforgeeks.org/angular-js/how-to-use-azure-static-web-apps-to-deploy-an-angular-app/
 
 
-YAML
+GitHub Action Workflow YAML
 
 name: Azure Static Web Apps CI/CD
 
@@ -415,3 +415,25 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ORANGE_MUD_03831390F }}
           action: "close"
 
+
+
+angular.json
+
+"assets": [
+              {
+                "glob": "**/*",
+                "input": "public",
+                "src/staticwebapp.config.json"
+              }
+            ]
+
+
+src/staticwebapp.config.json
+
+
+{
+"navigationFallback": {
+"rewrite": "/index.html",
+"exclude": ["/images/.{png,jpg,gif}", "/css/"]
+}
+}
